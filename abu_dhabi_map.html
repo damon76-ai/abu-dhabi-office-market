@@ -1,0 +1,127 @@
+  
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abu Dhabi · Офисный рынок · Карта районов</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #1A1410; color: #F5EFE0; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+  #header { padding: 12px 24px; background: #1A1410; border-bottom: 1px solid #3A3028; display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+  #header h1 { font-size: 15px; font-weight: 600; color: #F5EFE0; white-space: nowrap; }
+  #header .sub { font-size: 12px; color: #8C7B6A; font-family: 'Courier New', monospace; }
+  #map { flex: 1; position: relative; }
+  #google-map { width: 100%; height: 100%; }
+  #tooltip { position: absolute; pointer-events: none; z-index: 1000; background: rgba(20,14,10,0.96); border: 1px solid #3A3028; border-radius: 8px; padding: 12px 16px; min-width: 240px; display: none; }
+  .tt-name { font-size: 14px; font-weight: 700; color: #F5EFE0; margin-bottom: 8px; border-bottom: 1px solid #3A3028; padding-bottom: 6px; }
+  .tt-row { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px; gap: 12px; }
+  .tt-lbl { color: #8C7B6A; }
+  .tt-val { color: #F5EFE0; font-weight: 500; }
+  .tt-gold { color: #D4A853; font-weight: 500; }
+  .tt-hot { color: #E07040; font-weight: 500; }
+  .tt-grn { color: #7AAA40; font-weight: 500; }
+  .tt-note { font-size: 11px; color: #8C7B6A; margin-top: 8px; border-top: 1px solid #2A2018; padding-top: 6px; line-height: 1.5; }
+  #legend { position: absolute; bottom: 32px; left: 16px; z-index: 100; background: rgba(20,14,10,0.92); border: 1px solid #3A3028; border-radius: 8px; padding: 12px 16px; min-width: 190px; }
+  .leg-title { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: #8C7B6A; margin-bottom: 10px; }
+  .leg-item { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; font-size: 12px; color: #C8B89A; }
+  .leg-swatch { width: 14px; height: 14px; border-radius: 3px; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.25); }
+</style>
+</head>
+<body>
+<div id="header">
+  <h1>Abu Dhabi · Офисный рынок 2025</h1>
+  <span class="sub">Наведи на район — ставки и тренды</span>
+</div>
+<div id="map">
+  <div id="google-map"></div>
+  <div id="tooltip">
+    <div class="tt-name" id="tt-name"></div>
+    <div class="tt-row"><span class="tt-lbl">Класс</span><span class="tt-val" id="tt-class"></span></div>
+    <div class="tt-row"><span class="tt-lbl">Аренда (AED/кв.м/год)</span><span class="tt-gold" id="tt-rent"></span></div>
+    <div class="tt-row"><span class="tt-lbl">Динамика г/г</span><span class="tt-hot" id="tt-growth"></span></div>
+    <div class="tt-row"><span class="tt-lbl">Заполняемость</span><span class="tt-grn" id="tt-occ"></span></div>
+    <div class="tt-note" id="tt-note"></div>
+  </div>
+  <div id="legend">
+    <div class="leg-title">Класс офисов</div>
+    <div class="leg-item"><div class="leg-swatch" style="background:rgba(212,168,83,0.8);"></div>Prime / ADGM</div>
+    <div class="leg-item"><div class="leg-swatch" style="background:rgba(56,138,221,0.7);"></div>Grade A</div>
+    <div class="leg-item"><div class="leg-swatch" style="background:rgba(92,160,60,0.7);"></div>Grade A · ESG</div>
+    <div class="leg-item"><div class="leg-swatch" style="background:rgba(196,82,26,0.65);"></div>Grade A/B · рост</div>
+    <div class="leg-item"><div class="leg-swatch" style="background:rgba(140,123,106,0.6);"></div>Grade B/C</div>
+  </div>
+</div>
+<script>
+var DISTRICTS = [
+  { name: "Al Maryah Island (ADGM)", grade: "Prime / ADGM", rent: "2,800 – 3,500", growth: "+30–43%", occupancy: ">95%", note: "Финансовый хаб. City Gate Tower, BlackRock, Morgan Stanley, hedge funds.", fill: "#D4A853", fillOpacity: 0.45, stroke: "#D4A853", coords: [{lat:24.5005,lng:54.3910},{lat:24.5025,lng:54.3955},{lat:24.4998,lng:54.3990},{lat:24.4970,lng:54.3985},{lat:24.4955,lng:54.3955},{lat:24.4972,lng:54.3915}] },
+  { name: "Al Reem Island", grade: "Grade A", rent: "1,400 – 1,700", growth: "+18%", occupancy: "~92%", note: "ADGM расширился на Reem в Q1 2025. SAAS Business Tower (12,000 кв.м).", fill: "#388ADD", fillOpacity: 0.4, stroke: "#388ADD", coords: [{lat:24.5068,lng:54.3870},{lat:24.5105,lng:54.3920},{lat:24.5125,lng:54.3990},{lat:24.5105,lng:54.4050},{lat:24.5060,lng:54.4075},{lat:24.5005,lng:54.4055},{lat:24.4975,lng:54.4000},{lat:24.4985,lng:54.3930},{lat:24.5020,lng:54.3880}] },
+  { name: "Saadiyat Island", grade: "Grade A · emerging", rent: "1,300 – 1,600", growth: "+12%", occupancy: "~88%", note: "Saadiyat Business Park — к 2027. Культурный квартал, Louvre Abu Dhabi.", fill: "#388ADD", fillOpacity: 0.3, stroke: "#60A8E8", coords: [{lat:24.5350,lng:54.4040},{lat:24.5420,lng:54.4150},{lat:24.5440,lng:54.4280},{lat:24.5410,lng:54.4380},{lat:24.5350,lng:54.4420},{lat:24.5270,lng:54.4390},{lat:24.5230,lng:54.4300},{lat:24.5240,lng:54.4170},{lat:24.5280,lng:54.4065}] },
+  { name: "Yas Island", grade: "Grade A", rent: "1,400 – 1,700", growth: "+20%", occupancy: "~96%", note: "HB Tower (Aldar, 22,200 кв.м). 20% нового supply в АД с 2022. Ferrari World.", fill: "#388ADD", fillOpacity: 0.4, stroke: "#388ADD", coords: [{lat:24.4870,lng:54.5750},{lat:24.4950,lng:54.5820},{lat:24.5040,lng:54.6050},{lat:24.5060,lng:54.6220},{lat:24.5010,lng:54.6320},{lat:24.4920,lng:54.6340},{lat:24.4830,lng:54.6260},{lat:24.4780,lng:54.6100},{lat:24.4780,lng:54.5920},{lat:24.4820,lng:54.5790}] },
+  { name: "CBD / Corniche", grade: "Prime", rent: "2,200 – 2,800", growth: "+42%", occupancy: "~97%", note: "Центральный деловой район. Prime башни вдоль Corniche Road.", fill: "#D4A853", fillOpacity: 0.4, stroke: "#D4A853", coords: [{lat:24.4930,lng:54.3540},{lat:24.4970,lng:54.3620},{lat:24.4990,lng:54.3730},{lat:24.4965,lng:54.3810},{lat:24.4900,lng:54.3840},{lat:24.4840,lng:54.3810},{lat:24.4810,lng:54.3720},{lat:24.4830,lng:54.3620},{lat:24.4875,lng:54.3555}] },
+  { name: "Al Bateen", grade: "Grade A/B", rent: "1,200 – 1,500", growth: "+68%", occupancy: "~90%", note: "Взрывной рост в Q2 2025. Дипломатический квартал, посольства.", fill: "#C4521A", fillOpacity: 0.4, stroke: "#C4521A", coords: [{lat:24.4690,lng:54.3240},{lat:24.4750,lng:54.3320},{lat:24.4760,lng:54.3430},{lat:24.4720,lng:54.3510},{lat:24.4650,lng:54.3530},{lat:24.4590,lng:54.3470},{lat:24.4580,lng:54.3360},{lat:24.4620,lng:54.3265}] },
+  { name: "Masdar City", grade: "Grade A · ESG", rent: "1,300 – 1,600", growth: "+15%", occupancy: "~90%", note: "ESG/tech hub. Masdar City Square (2025). IRENA HQ. Khalifa University.", fill: "#5CA030", fillOpacity: 0.45, stroke: "#7ABB48", coords: [{lat:24.4275,lng:54.6180},{lat:24.4335,lng:54.6235},{lat:24.4350,lng:54.6330},{lat:24.4310,lng:54.6410},{lat:24.4235,lng:54.6430},{lat:24.4175,lng:54.6370},{lat:24.4160,lng:54.6270},{lat:24.4200,lng:54.6190}] },
+  { name: "Al Khalidiyah", grade: "Grade B", rent: "880 – 1,020", growth: "~flat", occupancy: "~80%", note: "Устаревший фонд. Локальный спрос, SME-сегмент.", fill: "#8C7B6A", fillOpacity: 0.35, stroke: "#8C7B6A", coords: [{lat:24.4820,lng:54.3680},{lat:24.4850,lng:54.3740},{lat:24.4840,lng:54.3810},{lat:24.4790,lng:54.3840},{lat:24.4740,lng:54.3820},{lat:24.4720,lng:54.3755},{lat:24.4735,lng:54.3685},{lat:24.4775,lng:54.3660}] },
+  { name: "Musaffah", grade: "Grade B", rent: "730 – 930", growth: "+73%", occupancy: "~85%", note: "Промзона. Наибольший % роста ставок в Q2 2025. Логистика, производство.", fill: "#8C7B6A", fillOpacity: 0.4, stroke: "#AAA090", coords: [{lat:24.3650,lng:54.4850},{lat:24.3730,lng:54.4950},{lat:24.3760,lng:54.5100},{lat:24.3720,lng:54.5220},{lat:24.3630,lng:54.5270},{lat:24.3530,lng:54.5220},{lat:24.3490,lng:54.5070},{lat:24.3530,lng:54.4930},{lat:24.3600,lng:54.4850}] },
+  { name: "MBZ City", grade: "Grade B", rent: "780 – 980", growth: "+26%", occupancy: "~83%", note: "Mohamed Bin Zayed City. Быстрорастущий suburban субрынок.", fill: "#8C7B6A", fillOpacity: 0.38, stroke: "#AAA090", coords: [{lat:24.4050,lng:54.5350},{lat:24.4120,lng:54.5450},{lat:24.4140,lng:54.5580},{lat:24.4090,lng:54.5680},{lat:24.3990,lng:54.5710},{lat:24.3910,lng:54.5640},{lat:24.3890,lng:54.5490},{lat:24.3960,lng:54.5370}] }
+];
+
+function initMap() {
+  var map = new google.maps.Map(document.getElementById("google-map"), {
+    center: {lat: 24.468, lng: 54.490},
+    zoom: 12,
+    mapTypeId: "satellite",
+    mapTypeControl: false,
+    streetViewControl: false,
+    fullscreenControl: true
+  });
+  var tooltip = document.getElementById("tooltip");
+  var mapDiv = document.getElementById("google-map");
+  DISTRICTS.forEach(function(d) {
+    var polygon = new google.maps.Polygon({
+      paths: d.coords,
+      strokeColor: d.stroke, strokeOpacity: 0.9, strokeWeight: 2,
+      fillColor: d.fill, fillOpacity: d.fillOpacity, map: map
+    });
+    var bounds = new google.maps.LatLngBounds();
+    d.coords.forEach(function(c) { bounds.extend(c); });
+    new google.maps.Marker({
+      position: bounds.getCenter(), map: map,
+      icon: {path: google.maps.SymbolPath.CIRCLE, scale: 0},
+      label: { text: d.name.split(" (")[0], color: "#FFFFFF", fontSize: "11px", fontWeight: "700", fontFamily: "Segoe UI, Arial, sans-serif" },
+      zIndex: 10
+    });
+    polygon.addListener("mouseover", function() {
+      polygon.setOptions({fillOpacity: Math.min(d.fillOpacity + 0.25, 0.85), strokeWeight: 3});
+      document.getElementById("tt-name").textContent = d.name;
+      document.getElementById("tt-class").textContent = d.grade;
+      document.getElementById("tt-rent").textContent = d.rent;
+      document.getElementById("tt-growth").textContent = d.growth;
+      document.getElementById("tt-occ").textContent = d.occupancy;
+      document.getElementById("tt-note").textContent = d.note;
+      tooltip.style.display = "block";
+    });
+    polygon.addListener("mousemove", function(e) {
+      var rect = mapDiv.getBoundingClientRect();
+      tooltip.style.left = (e.domEvent.clientX - rect.left + 18) + "px";
+      tooltip.style.top = (e.domEvent.clientY - rect.top - 10) + "px";
+    });
+    polygon.addListener("mouseout", function() {
+      polygon.setOptions({fillOpacity: d.fillOpacity, strokeWeight: 2});
+      tooltip.style.display = "none";
+    });
+  });
+}
+window.gm_authFailure = function() {
+  document.getElementById("google-map").innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#C4521A;font-size:14px;padding:40px;text-align:center;">Ошибка авторизации Google Maps.<br>Проверь billing в Google Cloud Console.</div>';
+};
+(function() {
+  var s = document.createElement("script");
+  s.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCpdrm-PfKzsCiSX0o70tvCR5gCqhLtTTw&callback=initMap";
+  s.async = true;
+  s.defer = true;
+  document.head.appendChild(s);
+})();
+</script>
+</body>
+</html>

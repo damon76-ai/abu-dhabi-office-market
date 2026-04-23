@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abu Dhabi Office Market 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sand: #F5EFE0;
+    --deep: #1A1410;
+    --rust: #C4521A;
+    --gold: #D4A853;
+    --olive: #5C6B3A;
+    --mist: #E8E0D0;
+    --text: #2C2218;
+    --subtle: #8C7B6A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--sand);
+    color: var(--text);
+    font-family: 'Instrument Sans', sans-serif;
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--deep);
+    color: var(--sand);
+    padding: 48px 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    right: -80px; top: -80px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    border: 1px solid rgba(212,168,83,0.15);
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    right: -20px; top: -20px;
+    width: 250px; height: 250px;
+    border-radius: 50%;
+    border: 1px solid rgba(212,168,83,0.1);
+  }
+
+  .header-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(32px, 5vw, 56px);
+    line-height: 1.05;
+    margin-bottom: 12px;
+  }
+
+  header h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .header-sub {
+    font-size: 14px;
+    color: rgba(245,239,224,0.6);
+    font-family: 'DM Mono', monospace;
+    margin-top: 8px;
+  }
+
+  .header-meta {
+    display: flex;
+    gap: 32px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+  }
+
+  .meta-item {
+    border-left: 2px solid var(--rust);
+    padding-left: 16px;
+  }
+
+  .meta-val {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    color: var(--sand);
+  }
+
+  .meta-lbl {
+    font-size: 11px;
+    color: rgba(245,239,224,0.55);
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  /* MAIN */
+  main {
+    padding: 48px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* SECTION TITLES */
+  .section-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--subtle);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--mist);
+  }
+
+  /* RATE CARDS GRID */
+  .rates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2px;
+    margin-bottom: 48px;
+    border: 2px solid var(--deep);
+  }
+
+  .rate-card {
+    background: white;
+    padding: 28px 24px;
+    position: relative;
+    transition: background 0.2s;
+  }
+
+  .rate-card:hover { background: var(--mist); }
+
+  .rate-card.highlight {
+    background: var(--deep);
+    color: var(--sand);
+  }
+  .rate-card.highlight .rate-label { color: var(--gold); }
+  .rate-card.highlight .rate-sub { color: rgba(245,239,224,0.5); }
+
+  .rate-badge {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    margin-bottom: 16px;
+  }
+  .badge-prime { background: #C4521A22; color: var(--rust); }
+  .badge-a { background: #D4A85322; color: #9A6E1A; }
+  .badge-b { background: #5C6B3A22; color: var(--olive); }
+  .badge-adgm { background: var(--gold); color: var(--deep); }
+
+  .rate-value {
+    font-family: 'DM Serif Display', serif;
+    font-size: 36px;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .rate-unit {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--subtle);
+    margin-bottom: 12px;
+  }
+  .rate-card.highlight .rate-unit { color: rgba(245,239,224,0.5); }
+
+  .rate-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .rate-sub {
+    font-size: 12px;
+    color: var(--subtle);
+    line-height: 1.5;
+  }
+
+  .rate-change {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    margin-top: 10px;
+    padding: 3px 8px;
+    border-radius: 2px;
+    background: #5C6B3A22;
+    color: var(--olive);
+  }
+  .rate-change.hot { background: #C4521A22; color: var(--rust); }
+
+  /* TWO-COL LAYOUT */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 48px;
+  }
+
+  @media (max-width: 760px) {
+    .two-col { grid-template-columns: 1fr; }
+    main { padding: 32px 24px; }
+    header { padding: 36px 24px 32px; }
+    .header-meta { gap: 20px; }
+  }
+
+  /* DISTRICT TABLE */
+  .district-table {
+    background: white;
+    border: 2px solid var(--deep);
+    overflow: hidden;
+  }
+
+  .district-table table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  .district-table th {
+    background: var(--deep);
+    color: var(--gold);
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 12px 16px;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .district-table td {
+    padding: 13px 16px;
+    border-bottom: 1px solid var(--mist);
+    vertical-align: middle;
+  }
+
+  .district-table tr:last-child td { border-bottom: none; }
+  .district-table tr:hover td { background: var(--mist); }
+
+  .district-name {
+    font-weight: 600;
+    font-size: 13px;
+  }
+
+  .district-tag {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: 2px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  .tag-cbd { background: #C4521A15; color: var(--rust); border: 1px solid #C4521A30; }
+  .tag-fz { background: #D4A85320; color: #9A6E1A; border: 1px solid #D4A85340; }
+  .tag-sub { background: #5C6B3A15; color: var(--olive); border: 1px solid #5C6B3A30; }
+
+  .num { font-family: 'DM Mono', monospace; font-size: 12px; }
+  .num.hi { color: var(--rust); font-weight: 500; }
+  .num.mid { color: #9A6E1A; }
+  .num.lo { color: var(--olive); }
+
+  .growth-pill {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 20px;
+    background: #5C6B3A15;
+    color: var(--olive);
+  }
+  .growth-pill.fire { background: #C4521A18; color: var(--rust); }
+  .growth-pill.warm { background: #D4A85320; color: #9A6E1A; }
+
+  /* TREND CHART */
+  .trend-panel {
+    background: white;
+    border: 2px solid var(--deep);
+    padding: 28px 24px;
+  }
+
+  .trend-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .bar-chart { display: flex; flex-direction: column; gap: 10px; }
+
+  .bar-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 12px;
+  }
+
+  .bar-label {
+    width: 90px;
+    flex-shrink: 0;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--subtle);
+  }
+
+  .bar-track {
+    flex: 1;
+    height: 24px;
+    background: var(--mist);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: white;
+    font-weight: 500;
+    animation: growBar 1.2s cubic-bezier(0.16,1,0.3,1) both;
+    transform-origin: left;
+  }
+
+  @keyframes growBar {
+    from { width: 0 !important; }
+  }
+
+  /* DEMAND PANEL */
+  .demand-panel {
+    background: var(--deep);
+    color: var(--sand);
+    border: 2px solid var(--deep);
+    padding: 28px 24px;
+  }
+
+  .demand-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: var(--sand);
+  }
+
+  .demand-items { display: flex; flex-direction: column; gap: 12px; }
+
+  .demand-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .demand-pct {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: var(--gold);
+    width: 52px;
+    flex-shrink: 0;
+    text-align: right;
+  }
+
+  .demand-bar-track {
+    flex: 1;
+    height: 6px;
+    background: rgba(245,239,224,0.1);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .demand-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    animation: growBar 1.2s cubic-bezier(0.16,1,0.3,1) both;
+  }
+
+  .demand-name {
+    font-size: 12px;
+    color: rgba(245,239,224,0.65);
+    width: 110px;
+    flex-shrink: 0;
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* PIPELINE */
+  .pipeline-panel {
+    background: white;
+    border: 2px solid var(--deep);
+    padding: 28px 24px;
+    margin-bottom: 48px;
+  }
+
+  .pipeline-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .pipeline-items { display: flex; flex-direction: column; gap: 0; }
+
+  .pipeline-item {
+    display: flex;
+    align-items: stretch;
+    border-bottom: 1px solid var(--mist);
+    padding: 14px 0;
+  }
+  .pipeline-item:last-child { border-bottom: none; }
+
+  .pipe-year {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--subtle);
+    width: 52px;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+
+  .pipe-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    margin-right: 14px;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+
+  .pipe-name { font-size: 13px; font-weight: 600; margin-bottom: 3px; }
+  .pipe-detail { font-size: 12px; color: var(--subtle); }
+
+  /* INSIGHT BOX */
+  .insight-box {
+    background: var(--rust);
+    color: white;
+    padding: 28px 32px;
+    margin-bottom: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .insight-box::before {
+    content: '"';
+    position: absolute;
+    right: 20px; top: -10px;
+    font-family: 'DM Serif Display', serif;
+    font-size: 120px;
+    color: rgba(255,255,255,0.12);
+    line-height: 1;
+  }
+
+  .insight-text {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    line-height: 1.4;
+    margin-bottom: 12px;
+  }
+
+  .insight-source {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 1px;
+  }
+
+  /* SOURCES */
+  .sources-panel {
+    border-top: 2px solid var(--deep);
+    padding-top: 24px;
+    margin-top: 8px;
+  }
+
+  .sources-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--subtle);
+    margin-bottom: 12px;
+  }
+
+  .sources-list {
+    display: flex; flex-wrap: wrap; gap: 8px;
+  }
+
+  .source-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    padding: 4px 10px;
+    border: 1px solid var(--mist);
+    border-radius: 2px;
+    color: var(--subtle);
+    background: white;
+  }
+
+  /* section spacing */
+  section { margin-bottom: 48px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-label">Библиотека идей · Идея #1 · Офисный рынок</div>
+  <h1>Abu Dhabi<br><em>Office Market</em></h1>
+  <div class="header-sub">Карта рынка · данные 2025 / H1–Q3 2025 · обновлено апрель 2026</div>
+  <div class="header-meta">
+    <div class="meta-item">
+      <div class="meta-val">3.4M м²</div>
+      <div class="meta-lbl">Общий объём предложения</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-val">97%</div>
+      <div class="meta-lbl">Заполняемость офисов</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-val">+11%</div>
+      <div class="meta-lbl">Рост новых ставок аренды</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-val">+28%</div>
+      <div class="meta-lbl">Рост Grade A (г/г, Q3 2025)</div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- СТАВКИ АРЕНДЫ -->
+  <section>
+    <div class="section-title">Ставки аренды</div>
+    <div class="rates-grid">
+      <div class="rate-card highlight">
+        <div class="rate-badge badge-adgm">ADGM</div>
+        <div class="rate-value">AED 2,800–3,500</div>
+        <div class="rate-unit">/ кв.м / год</div>
+        <div class="rate-label">ADGM — Al Maryah Island</div>
+        <div class="rate-sub">Лучшие здания: City Gate Tower +43% г/г, ADGM Square +30% г/г</div>
+        <div class="rate-change hot">↑ +30–43% г/г</div>
+      </div>
+      <div class="rate-card">
+        <div class="rate-badge badge-prime">Prime</div>
+        <div class="rate-value">AED 2,521</div>
+        <div class="rate-unit">/ кв.м / год · (AED 234 / sqft)</div>
+        <div class="rate-label">Prime офисы, в среднем</div>
+        <div class="rate-sub">Диапазон AED 180–260 / sqft / год. CBD: +42% г/г</div>
+        <div class="rate-change hot">↑ CBD +42% г/г</div>
+      </div>
+      <div class="rate-card">
+        <div class="rate-badge badge-a">Grade A</div>
+        <div class="rate-value">AED 1,491</div>
+        <div class="rate-unit">/ кв.м / год · (AED 139 / sqft)</div>
+        <div class="rate-label">Grade A офисы, в среднем</div>
+        <div class="rate-sub">Диапазон AED 150–180 / sqft / год. Outer CBD: +18% г/г</div>
+        <div class="rate-change">↑ +11–18% г/г</div>
+      </div>
+      <div class="rate-card">
+        <div class="rate-badge badge-b">Grade B/C</div>
+        <div class="rate-value">AED 79–103</div>
+        <div class="rate-unit">/ sqft / год</div>
+        <div class="rate-label">Grade B/C, вторичный рынок</div>
+        <div class="rate-sub">Mussafah — самый доступный, Khalidiyah — средний сегмент</div>
+        <div class="rate-change">↑ умеренный рост</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- СТАВКИ ПО РАЙОНАМ -->
+  <section>
+    <div class="section-title">Ставки аренды и тренды по районам</div>
+    <div class="district-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Район</th>
+            <th>Класс</th>
+            <th>Аренда (AED/sqft/год)</th>
+            <th>Динамика (г/г)</th>
+            <th>Заполняемость</th>
+            <th>Комментарий</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="district-name">ADGM</span><span class="district-tag tag-fz">Free Zone</span></td>
+            <td><span class="num hi">Prime</span></td>
+            <td><span class="num hi">260–325</span></td>
+            <td><span class="growth-pill fire">+30–43%</span></td>
+            <td><span class="num hi">>95%</span></td>
+            <td class="num" style="color:var(--subtle)">Финансовый хаб, HNWI, hedge funds</td>
+          </tr>
+          <tr>
+            <td><span class="district-name">Al Maryah Island</span><span class="district-tag tag-cbd">CBD</span></td>
+            <td><span class="num hi">Prime / A</span></td>
+            <td><span class="num hi">200–260</span></td>
+            <td><span class="growth-pill fire">+42%</span></td>
+            <td><span class="num hi">~97%</span></td>
+            <td class="num" style="color:var(--subtle)">Финансовый район, 29,000+ сотрудников</td>
+          </tr>
+          <tr>
+            <td><span class="district-name">Al Reem Island</span><span class="district-tag tag-cbd">CBD+</span></td>
+            <td><span class="num mid">Grade A</span></td>
+            <td><span class="num mid">150–180</span></td>
+            <td><span class="growth-pill warm">+18%</span></td>
+            <td><span class="num mid">~92%</span></td>
+            <td class="num" style="color:var(--subtle)">Новый SAAS Tower (Q2 2025), ADGM расширение</td>
+          </tr>
+          <tr>
+            <td><span class="district-name">Yas Island</span><span class="district-tag tag-sub">Emerging</span></td>
+            <td><span class="num mid">Grade A</span></td>
+            <td><span class="num mid">150–180</span></td>
+            <td><span class="growth-pill warm">+20%</span></td>
+            <td><span class="num mid">~96%</span></td>
+            <td class="num" style="color:var(--subtle)">HB Tower (Aldar, 238K sqft), 20% нового supply с 2022</td>
+          </tr>
+          <tr>
+            <td><span class="district-name">Al Bateen</span><span class="district-tag tag-cbd">CBD</span></td>
+            <td><span class="num mid">Grade A/B</span></td>
+            <td><span class="num mid">130–160</span></td>
+            <td><span class="growth-pill fire">+68%</span></td>
+            <td><span class="num mid">~90%</span></td>
+            <td class="num" style="color:var(--subtle)">Взрывной рост Q2 2025</td>
+          </tr>
+          <tr>
+            <td><span class="district-name">Musaffah</span><span class="district-tag tag-sub">Suburban</span></td>
+            <td><span class="num lo">Grade B</span></td>
+            <td><span class="num lo">79–100</span></td>
+            <td><span class="growth-pill fire">+73%</span></td>
+            <td><span class="num lo">~85%</span></td>
+            <td class="num" style="color:var(--subtle)">Наибольший % роста Q2; производство, логистика</td>
+          </tr>
+          <tr>
+            <td><span class="district-name">Masdar City</span><span class="district-tag tag-fz">Free Zone</span></td>
+            <td><span class="num mid">Grade A</span></td>
+            <td><span class="num mid">140–170</span></td>
+            <td><span class="growth-pill warm">+15%</span></td>
+            <td><span class="num mid">~90%</span></td>
+            <td class="num" style="color:var(--subtle)">ESG / tech; Masdar City Square сдаётся в 2025</td>
+          </tr>
+          <tr>
+            <td><span class="district-name">Al Khalidiyah</span><span class="district-tag tag-cbd">Mainland</span></td>
+            <td><span class="num lo">Grade B</span></td>
+            <td><span class="num lo">95–110</span></td>
+            <td><span class="growth-pill">~flat</span></td>
+            <td><span class="num lo">~80%</span></td>
+            <td class="num" style="color:var(--subtle)">Устаревший фонд, локальный спрос</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ТРЕНДЫ + СПРОС -->
+  <div class="two-col">
+    <div class="trend-panel">
+      <div class="trend-title">Рост ставок аренды — ключевые субрынки</div>
+      <div class="bar-chart">
+        <div class="bar-row">
+          <div class="bar-label">Al Bateen</div>
+          <div class="bar-track">
+            <div class="bar-fill" style="width:68%; background: var(--rust);">+68%</div>
+          </div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Musaffah</div>
+          <div class="bar-track">
+            <div class="bar-fill" style="width:73%; background: var(--rust); animation-delay:0.08s">+73%</div>
+          </div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">ADGM</div>
+          <div class="bar-track">
+            <div class="bar-fill" style="width:43%; background: var(--gold); animation-delay:0.16s">+43%</div>
+          </div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">CBD avg</div>
+          <div class="bar-track">
+            <div class="bar-fill" style="width:42%; background: var(--gold); animation-delay:0.24s">+42%</div>
+          </div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Grade A avg</div>
+          <div class="bar-track">
+            <div class="bar-fill" style="width:28%; background: var(--olive); animation-delay:0.32s">+28%</div>
+          </div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Outer CBD</div>
+          <div class="bar-track">
+            <div class="bar-fill" style="width:18%; background: var(--olive); animation-delay:0.4s">+18%</div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:16px; font-family:'DM Mono',monospace; font-size:10px; color:var(--subtle)">Источник: Savills Q2 2025 / Knight Frank Q3 2025</div>
+    </div>
+
+    <div class="demand-panel">
+      <div class="demand-title">Структура спроса на офисы</div>
+      <div class="demand-items">
+        <div class="demand-item">
+          <div class="demand-pct">32%</div>
+          <div class="demand-bar-track">
+            <div class="demand-bar-fill" style="width:100%; background:var(--gold)"></div>
+          </div>
+          <div class="demand-name">Бизнес-сервисы</div>
+        </div>
+        <div class="demand-item">
+          <div class="demand-pct">22%</div>
+          <div class="demand-bar-track">
+            <div class="demand-bar-fill" style="width:69%; background:var(--rust); animation-delay:0.1s"></div>
+          </div>
+          <div class="demand-name">Консалтинг</div>
+        </div>
+        <div class="demand-item">
+          <div class="demand-pct">19%</div>
+          <div class="demand-bar-track">
+            <div class="demand-bar-fill" style="width:59%; background:var(--rust); animation-delay:0.2s"></div>
+          </div>
+          <div class="demand-name">Банки / финансы</div>
+        </div>
+        <div class="demand-item">
+          <div class="demand-pct">9%</div>
+          <div class="demand-bar-track">
+            <div class="demand-bar-fill" style="width:28%; background:rgba(245,239,224,0.3); animation-delay:0.3s"></div>
+          </div>
+          <div class="demand-name">Госструктуры</div>
+        </div>
+        <div class="demand-item">
+          <div class="demand-pct">8%</div>
+          <div class="demand-bar-track">
+            <div class="demand-bar-fill" style="width:25%; background:rgba(245,239,224,0.2); animation-delay:0.4s"></div>
+          </div>
+          <div class="demand-name">Технологии</div>
+        </div>
+        <div class="demand-item">
+          <div class="demand-pct">~7%</div>
+          <div class="demand-bar-track">
+            <div class="demand-bar-fill" style="width:22%; background:rgba(245,239,224,0.15); animation-delay:0.5s"></div>
+          </div>
+          <div class="demand-name">Hedge funds</div>
+        </div>
+      </div>
+      <div style="margin-top:20px; font-family:'DM Mono',monospace; font-size:10px; color:rgba(245,239,224,0.4)">Источник: Knight Frank / Savills H1 2025</div>
+    </div>
+  </div>
+
+  <!-- INSIGHT -->
+  <div class="insight-box">
+    <div class="insight-text">Спрос на офисные площади в Абу-Даби достиг 5 млн кв. фут в H1 2025 — рост 110% год к году. Типичный запрос переместился в сторону крупных блоков 10–20 тыс. кв. фут. ADGM за год вырос на 43% по числу зарегистрированных компаний.</div>
+    <div class="insight-source">Knight Frank H1 2025 Office Market Review + Savills Q2 2025</div>
+  </div>
+
+  <!-- PIPELINE -->
+  <section>
+    <div class="section-title">Новое предложение — пайплайн</div>
+    <div class="pipeline-panel">
+      <div class="pipeline-title">Ключевые объекты ввода 2025–2028</div>
+      <div class="pipeline-items">
+        <div class="pipeline-item">
+          <div class="pipe-year">2025</div>
+          <div class="pipe-dot" style="background:var(--rust)"></div>
+          <div>
+            <div class="pipe-name">HB Tower, Yas Island (Aldar)</div>
+            <div class="pipe-detail">238,647 sqft Grade A · уже введён, почти полностью занят</div>
+          </div>
+        </div>
+        <div class="pipeline-item">
+          <div class="pipe-year">2025</div>
+          <div class="pipe-dot" style="background:var(--rust)"></div>
+          <div>
+            <div class="pipe-name">SAAS Business Tower, Al Reem Island</div>
+            <div class="pipe-detail">129,168 sqft Grade A · высокая pre-leasing активность</div>
+          </div>
+        </div>
+        <div class="pipeline-item">
+          <div class="pipe-year">2025</div>
+          <div class="pipe-dot" style="background:var(--gold)"></div>
+          <div>
+            <div class="pipe-name">Masdar City Square + The Link</div>
+            <div class="pipe-detail">Grade A, ESG-certified · Masdar City Free Zone</div>
+          </div>
+        </div>
+        <div class="pipeline-item">
+          <div class="pipe-year">2025</div>
+          <div class="pipe-dot" style="background:var(--gold)"></div>
+          <div>
+            <div class="pipe-name">Yas Place, Yas Island</div>
+            <div class="pipe-detail">Новый Grade A объект, высокий pre-leasing спрос</div>
+          </div>
+        </div>
+        <div class="pipeline-item">
+          <div class="pipe-year">2026–27</div>
+          <div class="pipe-dot" style="background:var(--olive)"></div>
+          <div>
+            <div class="pipe-name">One Maryah Place + Saadiyat Business Park</div>
+            <div class="pipe-detail">~100,000 sqm совокупно · должны частично снять дефицит Prime/A</div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:16px; padding:14px 16px; background:var(--mist); font-size:12px; color:var(--subtle); font-family:'DM Mono',monospace; border-radius:2px">
+        ⚠ Всего в 2025 г. ожидается ~100,000 кв.м нового предложения. Спрос существенно опережает ввод. Дефицит сохранится как минимум до 2027 г.
+      </div>
+    </div>
+  </section>
+
+  <!-- КЛЮЧЕВЫЕ ТЕЗИСЫ -->
+  <section>
+    <div class="section-title">Ключевые тезисы для принятия решений</div>
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap:2px; border:2px solid var(--deep)">
+      <div style="background:white; padding:24px 22px; border-right:1px solid var(--mist)">
+        <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--rust); margin-bottom:10px">Дефицит supply</div>
+        <div style="font-size:13px; line-height:1.6; color:var(--text)">Prime и Grade A — структурный дефицит. 97% заполняемость означает: арендодатель диктует условия. Новые переговоры по аренде идут с позиции слабости арендатора.</div>
+      </div>
+      <div style="background:white; padding:24px 22px; border-right:1px solid var(--mist)">
+        <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:10px">ADGM — отдельный рынок</div>
+        <div style="font-size:13px; line-height:1.6; color:var(--text)">ADGM — отдельная история: +43% по числу компаний, расширение на Reem Island. Ставки AED 2,800–3,500/м² делают его сопоставимым с лучшими локациями Дубая.</div>
+      </div>
+      <div style="background:white; padding:24px 22px">
+        <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--olive); margin-bottom:10px">Сдвиг спроса</div>
+        <div style="font-size:13px; line-height:1.6; color:var(--text)">Активность смещается из Al Danah / Al Nahyan (старый фонд) в Musaffah, MBZ City, Al Bateen. Взрывной рост в Musaffah (+73%) — отражение нехватки мест в CBD.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- СРАВНЕНИЕ С МИРОВЫМИ ГОРОДАМИ -->
+  <section>
+    <div class="section-title">Абу-Даби в контексте мировых рынков</div>
+    <div class="district-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Город</th>
+            <th>Офисный фонд</th>
+            <th>Население города</th>
+            <th>м² на жителя</th>
+            <th>Прирост населения г/г</th>
+            <th>Вывод</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="district-name">Нью-Йорк</span></td>
+            <td><span class="num">~68 млн м²</span></td>
+            <td><span class="num">8,3 млн</span></td>
+            <td><span class="num hi" style="font-size:16px;font-family:'DM Serif Display',serif;">8,2</span></td>
+            <td><span class="growth-pill">+1,0%</span></td>
+            <td style="font-size:12px;color:var(--subtle);">Исторически перегружен офисами. Высокая вакантность после пандемии.</td>
+          </tr>
+          <tr>
+            <td><span class="district-name">Лондон</span></td>
+            <td><span class="num">~27 млн м²</span></td>
+            <td><span class="num">9,1 млн</span></td>
+            <td><span class="num mid" style="font-size:16px;font-family:'DM Serif Display',serif;">3,0</span></td>
+            <td><span class="growth-pill">+1,0%</span></td>
+            <td style="font-size:12px;color:var(--subtle);">Зрелый рынок. Умеренный баланс спроса и предложения.</td>
+          </tr>
+          <tr>
+            <td><span class="district-name">Гонконг</span></td>
+            <td><span class="num">~13,1 млн м²</span></td>
+            <td><span class="num">7,5 млн</span></td>
+            <td><span class="num" style="font-size:16px;font-family:'DM Serif Display',serif;color:var(--subtle);">1,7</span></td>
+            <td><span class="growth-pill" style="background:#C4521A22;color:var(--rust);">~0%</span></td>
+            <td style="font-size:12px;color:var(--subtle);">Население стагнирует. Избыток офисов, ставки снижаются.</td>
+          </tr>
+          <tr style="background:#FFFBF0;">
+            <td><span class="district-name" style="color:var(--rust);">Абу-Даби ★</span></td>
+            <td><span class="num hi">~3,4 млн м²</span></td>
+            <td><span class="num hi">2,8 млн</span></td>
+            <td><span class="num hi" style="font-size:16px;font-family:'DM Serif Display',serif;">1,2</span></td>
+            <td><span class="growth-pill fire">+7,5%</span></td>
+            <td style="font-size:12px;color:var(--rust);font-weight:600;">Наименьшее насыщение + наибольший прирост = структурный дефицит.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="margin-top:16px;padding:16px 20px;background:var(--deep);color:var(--sand);border-radius:2px;font-size:13px;line-height:1.7;">
+      <span style="color:var(--gold);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;display:block;margin-bottom:8px;">Ключевой вывод</span>
+      Абу-Даби растёт по населению в <strong style="color:var(--gold);">7,5 раз быстрее</strong> Лондона и Нью-Йорка — при этом офисный фонд на душу населения <strong style="color:var(--gold);">самый низкий</strong> среди всех сравниваемых городов. Классическая формула структурного дефицита: спрос растёт быстро, предложение не успевает. Отсюда — 97% заполняемость и +42% к ставкам аренды в CBD.
+    </div>
+  </section>
+
+  <!-- ИСТОЧНИКИ -->
+  <div class="sources-panel">
+    <div class="sources-title">Источники данных</div>
+    <div class="sources-list">
+      <span class="source-tag">ADREC Market Report 2025 (фев. 2026)</span>
+      <span class="source-tag">Savills Q2 2025 Office Market in Minutes</span>
+      <span class="source-tag">Knight Frank GCC Office Market Review Q3 2025</span>
+      <span class="source-tag">Knight Frank H1 2025 Office Market Review</span>
+      <span class="source-tag">Cushman & Wakefield Core Q1 2025 Marketbeat</span>
+      <span class="source-tag">Driven Properties H1 2025 Market Report</span>
+    </div>
+  </div>
+
+</main>
+
+</body>
+</html>
